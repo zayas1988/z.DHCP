@@ -14,7 +14,8 @@
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Users manage", users_path %></li>
-                <li><%= link_to "Edit subnets", subnets_path(current_user) %></li>
+                <li><%= link_to "Edit subnets", subnets_path %></li>
+		<li><%= link_to "Tftp groups", tftps_path %></li>
                 <li class="divider"></li>
                 <li>
                   <%= link_to "Sign out", signout_path, method: "delete" %>

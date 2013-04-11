@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411091712) do
+ActiveRecord::Schema.define(:version => 20130411144712) do
 
   create_table "subnets", :force => true do |t|
     t.string   "adress"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(:version => 20130411091712) do
   end
 
   add_index "subnets", ["adress"], :name => "index_subnets_on_adress", :unique => true
+
+  create_table "tftps", :force => true do |t|
+    t.string   "image"
+    t.string   "group"
+    t.string   "config"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tftps", ["image", "group"], :name => "index_tftps_on_image_and_group"
 
   create_table "users", :force => true do |t|
     t.string   "name"

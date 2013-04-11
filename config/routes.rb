@@ -2,6 +2,7 @@ ZDhcp::Application.routes.draw do
 
 resources :subnets
 resources :users
+resources :tftps
 resources :sessions, only: [:new, :create, :destroy]
 match '/signin',  to: 'sessions#new'
 match '/signout', to: 'sessions#destroy', via: :delete
