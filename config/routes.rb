@@ -1,4 +1,15 @@
 ZDhcp::Application.routes.draw do
+
+resources :subnets
+resources :users
+resources :sessions, only: [:new, :create, :destroy]
+match '/signin',  to: 'sessions#new'
+match '/signout', to: 'sessions#destroy', via: :delete
+root to: 'sessions#new'
+match '/help',    to: 'static_pages#help'
+match '/about',   to: 'static_pages#about'
+#match '/newsubnet' to: 'subnets#new'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

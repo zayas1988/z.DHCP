@@ -15,9 +15,9 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: z.DHCP_development
+  database: zdhcp_development
   pool: 5
-  username: z.DHCP
+  username: postgres
   password: 123123
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -41,15 +41,15 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: z.DHCP_test
+  database: zDHCP_test
   pool: 5
-  username: z.DHCP
+  username: postgres
   password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: z.DHCP_production
+  database: zdhcp_production
   pool: 5
-  username: z.DHCP
+  username: z.dhcp
   password:

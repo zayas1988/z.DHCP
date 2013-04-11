@@ -1,0 +1,29 @@
+<% provide(:title, 'New subnet') %>
+<h1>New subnet</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@subnet) do |f| %>
+
+        <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :adress %>
+      <%= f.text_field :adress %>
+
+      <%= f.label :broadcast %>
+      <%= f.text_field :broadcast %>
+
+      <%= f.label :mask %>
+      <%= f.text_field :mask %>
+
+      <%= f.label :nameservers %>
+      <%= f.text_field :nameservers %>
+  
+      <%= f.label :routers %>
+      <%= f.text_field :routers %>
+
+      <%= f.label :domainname %>
+      <%= f.text_field :domainname %>
+
+      <%= f.submit "Add new subnet", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

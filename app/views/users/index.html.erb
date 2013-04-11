@@ -1,0 +1,11 @@
+<% provide(:title, 'Users managment') %>
+<h1>All users</h1>
+<%= link_to "New user", new_user_path,
+                                class: "btn btn-large btn-primary" %>
+
+<%= will_paginate %>
+<ul class="users">
+  <%= render @users %>
+</ul>
+<%= will_paginate %>
+

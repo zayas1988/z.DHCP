@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  adress: MyString
+  mask: MyString
+  broadcast: MyString
+  routers: MyString
+  nameservers: MyString
+  domainname: MyString
+
+two:
+  adress: MyString
+  mask: MyString
+  broadcast: MyString
+  routers: MyString
+  nameservers: MyString
+  domainname: MyString

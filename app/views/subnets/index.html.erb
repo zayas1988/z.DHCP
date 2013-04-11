@@ -1,0 +1,12 @@
+<% provide(:title, 'All subnets') %>
+<h1>All subnets</h1>
+
+<%= link_to "New Subnet", new_subnet_path,
+                                class: "btn btn-large btn-primary" %>
+
+<%= will_paginate %>
+<ul class="subnets">
+  <%= render @subnets %>
+</ul>
+<%= will_paginate %>
+
