@@ -9,6 +9,7 @@ match '/signout', to: 'sessions#destroy', via: :delete
 root to: 'sessions#new'
 match '/help',    to: 'static_pages#help'
 match '/about',   to: 'static_pages#about'
+match '/configure', to: 'static_pages#configure' 
 #match '/newsubnet' to: 'subnets#new'
 
   # The priority is based upon order of creation:

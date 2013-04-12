@@ -2,7 +2,7 @@ class Subnet < ActiveRecord::Base
 require "resolv"
   attr_accessible :adress, :broadcast, :domainname, :mask, :nameservers, :routers
   before_save { |subnet| subnet.domainname = domainname.downcase }
-
+  has_many :hosts
   validates :adress, presence: true, format: { with: Resolv::IPv4::Regex }
   validates :broadcast, presence: true, format: { with: Resolv::IPv4::Regex }
   validates :mask, presence: true, format: { with: Resolv::IPv4::Regex }

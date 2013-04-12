@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411144712) do
+ActiveRecord::Schema.define(:version => 20130411153027) do
+
+  create_table "hosts", :force => true do |t|
+    t.string   "hostname"
+    t.string   "ip"
+    t.string   "mac"
+    t.boolean  "usetftp"
+    t.string   "discription"
+    t.integer  "tftp_id"
+    t.integer  "subnet_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "subnets", :force => true do |t|
     t.string   "adress"
