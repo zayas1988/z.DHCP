@@ -4,15 +4,16 @@
       <%= link_to "z.DHCP", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "hosts", root_path %></li>
           <li><%= link_to "Help", help_path %></li>
           <% if signed_in? %>
+             <li><%= link_to "hosts", main_path %></li>
              <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Configure <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Configure server", configure_path %></li>
+            		<li><%=	link_to "New host", new_host_path %></li>
                 <li class="divider"></li>
                 <li>
                   <%= link_to "Sign out", signout_path, method: "delete" %>

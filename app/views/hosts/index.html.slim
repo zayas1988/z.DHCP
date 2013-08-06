@@ -1,0 +1,14 @@
+- provide(:title, 'All Hosts of current subnet')
+= link_to "New Host", new_host_path,
+	                        class: "btn btn-large btn-primary"
+
+
+table class="table table-striped"
+  thead
+   tr
+    th hostname
+    th ip
+    th mac
+    th discription
+    th tftp
+  = render hosts

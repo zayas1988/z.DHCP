@@ -4,13 +4,12 @@ class CreateHosts < ActiveRecord::Migration
       t.string :hostname
       t.string :ip
       t.string :mac
-      t.boolean :usetftp
+ #     t.boolean :usetftp
       t.string :discription
       t.integer :tftp_id
       t.integer :subnet_id
-
       t.timestamps
     end
-
+add_index :hosts, [:subnet_id, :ip]
   end
 end

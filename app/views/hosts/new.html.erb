@@ -1,0 +1,39 @@
+<% provide(:title, 'New Host') %>
+<h1>New subnet</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@host) do |f| %>
+
+        <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :subnet_id %>
+      <select name ="host[subnet_id]">
+      <% @subnets.each do |subnet| %>
+        <option value=<%=subnet.id %>>
+          <%="#{subnet.adress} / #{subnet.mask}"%></option>
+      <%end%>
+      </select>
+
+      <%= f.label :ip %>
+      <%= f.text_field :ip %>
+
+      <%= f.label :hostname %>
+      <%= f.text_field :hostname %>
+
+      <%= f.label :mac %>
+      <%= f.text_field :mac %>
+
+      <%= f.label :discription %>
+      <%= f.text_field :discription %>
+      
+      <%= f.label :tftp_id %>
+      <select name="host[tftp_id]">
+      <% @tftps.each do |tftp| %>
+         <option value=<%=tftp.id %>>
+          <%=tftp.image%></option>
+      <%end%>
+      <select>
+            <%= f.submit "Add new subnet", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

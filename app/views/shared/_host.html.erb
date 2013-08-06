@@ -1,0 +1,6 @@
+<li>
+  <%= link_to host.hostname, edit_host_path(host) %>
+    | <%= link_to "delete", host, method: :delete,
+                                  data: { confirm: "You sure?" } %
+</li>
+

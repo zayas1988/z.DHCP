@@ -1,0 +1,20 @@
+<% provide(:title, 'Configure') %>
+<h1>Server config</h1>
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+     <% @subnets.each do |subnet| %>
+     
+    <li>
+ <a href=<%= subnet.id %> data-toggle="tab"><%= subnet.adress %></a></li>
+    <% end %>
+  </ul>
+  <div class="tab-content">
+    <% @subnets.each do |subnet| %>
+    <div class="tab-pane" id=<%= subnet.id %>>
+    <%= @hosts = subnet.hosts %>
+    <%= render :template => "hosts/index" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+

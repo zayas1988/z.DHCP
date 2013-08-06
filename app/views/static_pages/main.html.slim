@@ -1,0 +1,20 @@
+title Hosts managment
+.tabbable
+  ul.nav.nav-tabs
+  	- @subnets.each do |subnet|
+  	  - if subnet.id==@subnets.first.id
+        li class="active"
+          a href="#tab#{subnet.id}" data-toggle="tab" 
+            ="#{subnet.adress}"
+      - else
+        li
+          a href="#tab#{subnet.id}" data-toggle="tab" 
+            ="#{subnet.adress}"
+  .tab-content
+    - @subnets.each do |subnet|
+      - if subnet.id==@subnets.first.id
+        div id="tab#{subnet.id}" class="tab-pane active"
+          =render template: "hosts/index", locals: {hosts: subnet.hosts.all}
+      - else
+        div id="tab#{subnet.id}" class="tab-pane" 
+          =render template: "hosts/index", locals: {hosts: subnet.hosts.all}

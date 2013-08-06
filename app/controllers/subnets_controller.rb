@@ -10,7 +10,11 @@ before_filter :signed_in_user
   def index
     @subnets = @subnets = Subnet.paginate(page: params[:page])
   end
-
+  def show
+    @subnets = Subnet.all
+#    @hosts = @subnets.hosts.all
+  end
+ 
   def new
    @subnet = Subnet.new
   end

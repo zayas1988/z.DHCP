@@ -1,0 +1,26 @@
+<% provide(:title, 'Hosts managment') %>
+<div class="tabbable">
+	<ul class="nav nav-tabs">
+		<% @subnets.each do |subnet| %> 
+		<% if subnet.id==@subnets.first.id %>
+		  <li class="active"><a href=('#' + "tab#{subnet.id}") data-toggle="tab"><%="#{subnet.adress}"%></a></li>
+		<%else%>
+		  <li><a href="#tab#{subnet.id}" data-toggle="tab"><%="#{subnet.adress}"%>
+		  </a></li>
+		<%end%>
+		<%end%>
+	</ul>
+	<div class = "tab-content">
+	  <% @subnets.each do |subnet| %>
+	  <% if subnet.id==@subnets.first.id %>
+	    <div class="tab-pane active" id="tab#{subnet.id}">
+		  123
+	    </div>
+      <% else %>
+        <div class="tab-plane" id="tab#{subnet.id}">
+  		  333
+        </div>
+      <%end%>
+    <%end%>
+	</div>
+</div>

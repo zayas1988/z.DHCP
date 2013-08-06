@@ -21,5 +21,11 @@ namespace :db do
 			routers: "192.168.1.200",
 			nameservers: "192.168.1.230, 192.168.187.230",
 			domainname: "local.polad.ru")
+    subnets = Subnet.first
+for i in 1..10
+subnets.hosts.create!(ip: "192.168.100.#{i}",
+			hostname: "#{i}",
+			mac: "AABBCCDD#{i}")
+end
   end
 end
