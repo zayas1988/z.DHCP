@@ -11,4 +11,5 @@ table class="table table-striped"
     th mac
     th discription
     th tftp
-  = render hosts
+    th lastping
+  = render hosts.sort_by &:ip

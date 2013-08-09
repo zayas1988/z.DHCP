@@ -18,10 +18,10 @@ before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
   def create
     @host = Host.new(params[:host])
     @subnets = Subnet.all
-   @tftps = Tftp.all
+    @tftps = Tftp.all
     if @host.save
         flash[:success] = "Host added"
-        redirect_to hosts_path
+        redirect_to main_path
     else
       render :action => :new
     end
@@ -29,8 +29,24 @@ before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
 
   def edit
    @host = Host.find(params[:id])
+   @subnets= Subnet.all
+   @tftps= Tftp.all
   end
-  
+  def update
+    @subnets= Subnet.all
+   @tftps= Tftp.all
+    @host = Host.find(params[:id])
+    if @host.update_attributes(params[:host])
+      flash[:success] = "Host updated"
+      redirect_to main_path
+    else
+      render :action => :edit
+    end
+  end
+  def setlastping
+    @host = Host.find(params[:id])
+    @host.lastping = Date.current
+  end
   private
  
   def signed_in_user

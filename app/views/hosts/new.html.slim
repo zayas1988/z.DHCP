@@ -1,0 +1,25 @@
+title= "New Host"
+h1 New Host
+.row
+    .span6.offset3
+      = form_for(@host) do |f|
+        = render 'shared/error_messages', object: f.object
+        = f.label :subnet_id
+        select name="host[subnet_id]"
+          - @subnets.each do |subnet|
+            option value=subnet.id data-ip-prefix=subnet.subnet_prefix
+              ="#{subnet.adress} / #{subnet.mask}"
+        = f.label :ip
+        = f.text_field :ip
+        = f.label :hostname
+        = f.text_field :hostname
+        = f.label :mac
+        = f.text_field :mac, class: 'mac-address-masked-input'
+        = f.label :discription
+        = f.text_field :discription
+        = f.label :tftp_id
+        select name="host[tftp_id]"
+          - @tftps.each do |tftp|
+            option value=tftp.id
+              ="#{tftp.image}"
+        = f.submit "Add new subnet", class: "btn btn-large btn-primary"

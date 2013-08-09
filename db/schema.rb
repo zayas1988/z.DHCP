@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411153027) do
+ActiveRecord::Schema.define(:version => 20130806135859) do
 
   create_table "hosts", :force => true do |t|
     t.string   "hostname"
@@ -23,7 +23,10 @@ ActiveRecord::Schema.define(:version => 20130411153027) do
     t.integer  "subnet_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.datetime "lastping"
   end
+
+  add_index "hosts", ["lastping"], :name => "index_hosts_on_lastping"
 
   create_table "subnets", :force => true do |t|
     t.string   "adress"
