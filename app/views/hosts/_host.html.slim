@@ -1,7 +1,8 @@
 tr
   td = link_to host.hostname, edit_host_path(host)
-  td = host.ip
+  td = host.ip   
   td = host.mac
   td = host.discription
   td = host.tftp.image
-  td = host.lastping
+  /td = host.lastping
+  td = link_to " del", host, method: :delete, data: {confirm: "You sure?" }

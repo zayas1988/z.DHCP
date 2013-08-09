@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806135859) do
+ActiveRecord::Schema.define(:version => 20130809090527) do
 
   create_table "hosts", :force => true do |t|
     t.string   "hostname"
@@ -45,10 +45,12 @@ ActiveRecord::Schema.define(:version => 20130806135859) do
     t.string   "image"
     t.string   "group"
     t.string   "config"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "pathtoconfig"
   end
 
+  add_index "tftps", ["config", "pathtoconfig"], :name => "index_tftps_on_config_and_pathtoconfig"
   add_index "tftps", ["image", "group"], :name => "index_tftps_on_image_and_group"
 
   create_table "users", :force => true do |t|

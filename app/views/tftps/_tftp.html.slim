@@ -1,0 +1,11 @@
+/<li>
+/<%= link_to tftp.image + " " + tftp.group , edit_tftp_path(tftp) %>
+/<t>|</t> <%= link_to "delete", tftp, method: :delete,
+/                                  data: { confirm: "You sure?" } %>
+/</li>
+tr
+  td = link_to tftp.image, edit_tftp_path(tftp)
+  td = tftp.group
+  td = tftp.config
+  td = tftp.pathtoconfig
+  td = link_to "del", tftp, method: :delete, data: { confirm: "You sure?" }

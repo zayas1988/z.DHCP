@@ -1,0 +1,16 @@
+- provide(:title, 'All subnets')
+h2 All subnets
+= link_to "New Subnet", new_subnet_path,
+                                class: "btn btn-large btn-primary"
+
+/<ul class="subnets">
+table class="table table-striped"  
+ thead
+  tr
+   th address/mask
+   th domainname
+   th nameservers
+   th routers
+   th delete
+ = render @subnets
+/</ul>

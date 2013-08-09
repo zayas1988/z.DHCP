@@ -43,9 +43,10 @@ before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
       render :action => :edit
     end
   end
-  def setlastping
-    @host = Host.find(params[:id])
-    @host.lastping = Date.current
+  def destroy
+    Host.find(params[:id]).destroy
+    flash[:success] = "Host deleted."
+    redirect_to main_path
   end
   private
  

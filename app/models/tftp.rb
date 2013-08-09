@@ -4,5 +4,5 @@ class Tftp < ActiveRecord::Base
   validates(:image, presence: true)
   validates(:group, presence: true)
   validates(:config, presence: true)
- 
-end
+  validates(:pathtoconfig, presence: true)
+  end

@@ -28,4 +28,8 @@ class Host < ActiveRecord::Base
       errors.add :ip, "must be on chosen subnet"
     end
   end
+  def setlastping
+    @host = Host.find(params[:id])
+    @host.lastping = Date.current
+  end
 end

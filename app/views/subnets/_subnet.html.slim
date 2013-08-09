@@ -1,0 +1,11 @@
+/<li>
+/<%= link_to subnet.adress + "/" + subnet.mask , edit_subnet_path(subnet) %>
+/<t>|</t>    <%= link_to "delete", subnet, method: :delete,
+/                                  data: { confirm: "You sure?" } %>
+/</li>
+tr
+  td = link_to "#{subnet.adress} / #{subnet.mask}", edit_subnet_path(subnet)
+  td = subnet.domainname
+  td = subnet.nameservers
+  td = subnet.routers
+  td = link_to " del", subnet, method: :delete, data: {confirm: "You sure?" }
