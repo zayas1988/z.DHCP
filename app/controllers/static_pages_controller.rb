@@ -11,6 +11,7 @@ class StaticPagesController < ApplicationController
    @users = User.paginate(page: params[:page])
    @subnets = Subnet.paginate(page: params[:page])
    @tftps = Tftp.paginate(page: params[:page])
+   @dhcpservers = Dhcpserver.paginate(page: params[:page])
    end
   def show_users
     redirect_to :controller => 'users', :action => 'index'

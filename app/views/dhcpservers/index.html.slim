@@ -1,0 +1,15 @@
+- provide(:title, 'Servers managment')
+= link_to "New dhcp server", new_dhcpserver_path,
+                                class: "btn btn-large btn-primary"
+
+
+table class="table table-striped"
+  thead
+    tr
+     th ip
+     th sshport
+     th configpath
+     th reloadcommand
+     th del
+  = render @dhcpservers 
+  /.sort_by &:ip

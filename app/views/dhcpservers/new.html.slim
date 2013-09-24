@@ -1,0 +1,15 @@
+title= "New server"
+h1 New server
+.row
+    .span6.offset3
+      = form_for(@dhcpserver) do |f|
+        = render 'shared/error_messages', object: f.object
+        = f.label :ip
+        = f.text_field :ip
+        = f.label :sshport
+        = f.text_field :sshport
+        = f.label :configpath
+        = f.text_field :configpath
+        = f.label :reloadcommand
+        = f.text_field :reloadcommand
+        = f.submit "Add new server", class: "btn btn-large btn-primary"

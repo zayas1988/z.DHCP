@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130809102355) do
+ActiveRecord::Schema.define(:version => 20130924124147) do
 
   create_table "dhcpservers", :force => true do |t|
     t.string   "ip"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20130809102355) do
     t.boolean  "sync"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.boolean  "lock"
   end
 
   add_index "dhcpservers", ["ip", "sshport"], :name => "index_dhcpservers_on_ip_and_sshport"

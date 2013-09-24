@@ -1,5 +1,11 @@
 class DhcpserversController < ApplicationController
 before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
+  def index
+    @dhcpservers = Dhcpserver.all
+        #@hosts = @hosts = Host.paginate(page: params[:page])
+    #@hosts= Host.all
+  end
+
   def new
   @dhcpserver = Dhcpserver.new
   end

@@ -8,6 +8,7 @@ resources :subnets
 resources :users
 resources :tftps
 resources :hosts
+resources :dhcpservers
 resources :sessions, only: [:new, :create, :destroy]
 match '/main', to: 'static_pages#main'
 match '/signin',  to: 'sessions#new'

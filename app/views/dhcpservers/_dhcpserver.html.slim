@@ -1,0 +1,6 @@
+tr
+ td = link_to dhcpserver.ip, edit_dhcpserver_path(dhcpserver)
+ td = dhcpserver.sshport
+ td = dhcpserver.configpath
+ td = dhcpserver.reloadcommand
+ td = link_to "del", dhcpserver, method: :delete, data: { confirm: "You sure?" }
