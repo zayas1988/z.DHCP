@@ -26,6 +26,7 @@ class Host < ActiveRecord::Base
     ip=IPAddr.new("#{self.ip}")
     if !net.include?(ip)
       errors.add :ip, "must be on chosen subnet"
+      errors.add  :ip, "#{net} #{ip}"
     end
   end
   def setlastping

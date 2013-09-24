@@ -11,6 +11,6 @@ require "resolv"
   validates(:nameservers, presence: true)
 def subnet_prefix
     prefix=self.adress.split(".")
-    return "#{prefix[1]}.#{prefix[2]}.#{prefix[3]}."
+    return "#{prefix[0]}.#{prefix[1]}.#{prefix[2]}."
 end
 end

@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130809090527) do
+ActiveRecord::Schema.define(:version => 20130809102355) do
+
+  create_table "dhcpservers", :force => true do |t|
+    t.string   "ip"
+    t.integer  "sshport"
+    t.string   "configpath"
+    t.string   "reloadcommand"
+    t.boolean  "sync"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "dhcpservers", ["ip", "sshport"], :name => "index_dhcpservers_on_ip_and_sshport"
+  add_index "dhcpservers", ["ip", "sync"], :name => "index_dhcpservers_on_ip_and_sync"
 
   create_table "hosts", :force => true do |t|
     t.string   "hostname"
@@ -52,6 +65,18 @@ ActiveRecord::Schema.define(:version => 20130809090527) do
 
   add_index "tftps", ["config", "pathtoconfig"], :name => "index_tftps_on_config_and_pathtoconfig"
   add_index "tftps", ["image", "group"], :name => "index_tftps_on_image_and_group"
+
+  create_table "tftpservers", :force => true do |t|
+    t.string   "ip"
+    t.integer  "sshport"
+    t.string   "tftppath"
+    t.boolean  "sync"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tftpservers", ["ip", "sshport"], :name => "index_tftpservers_on_ip_and_sshport"
+  add_index "tftpservers", ["ip", "sync"], :name => "index_tftpservers_on_ip_and_sync"
 
   create_table "users", :force => true do |t|
     t.string   "name"

@@ -1,5 +1,9 @@
 ZDhcp::Application.routes.draw do
 
+  get "dhcpservers/new"
+
+  get "tftpservers/new"
+
 resources :subnets
 resources :users
 resources :tftps

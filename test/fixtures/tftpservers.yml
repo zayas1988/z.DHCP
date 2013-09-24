@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ip: MyString
+  sshport: 1
+  tftppath: MyString
+  sync: false
+
+two:
+  ip: MyString
+  sshport: 1
+  tftppath: MyString
+  sync: false
