@@ -1,0 +1,16 @@
+- provide(:title, 'Edit tftp groups')
+h1 Edit tftp group
+.row
+  .span6.offset3
+    = form_for(@tftp) do |f|
+      = render 'shared/error_messages', object: f.object
+      = f.label :image
+      = f.text_field :image
+      = f.label :group
+      = f.text_field :group
+      = f.label "config file name"
+      = f.text_field  :config
+      = f.label "path to config"
+      = f.text_field  :pathtoconfig
+      
+      = f.submit "Save changes", class: "btn btn-large btn-primary"
