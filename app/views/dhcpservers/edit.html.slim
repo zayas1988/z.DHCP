@@ -1,5 +1,5 @@
-title= "New server"
-h1 New server
+title= "Edit server"
+h1 New server #{@dhcpserver.ip}
 .row
     .span6.offset3
       = form_for(@dhcpserver) do |f|
@@ -16,4 +16,4 @@ h1 New server
             = check_box_tag "dhcpserver[subnet_ids][]", subnet.id, @dhcpserver.subnets.include?(subnet)
             = subnet.adress
             = f.label " "
-        = f.submit "Add new server", class: "btn btn-large btn-primary"
+        = f.submit "Edit server", class: "btn btn-large btn-primary"

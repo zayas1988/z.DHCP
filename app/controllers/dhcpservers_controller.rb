@@ -1,7 +1,7 @@
 class DhcpserversController < ApplicationController
 before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
   def index
-    @dhcpservers = Dhcpserver.all
+    
         #@hosts = @hosts = Host.paginate(page: params[:page])
     #@hosts= Host.all
   end
@@ -22,7 +22,8 @@ before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
    	@dhcpserver = Dhcpserver.find(params[:id])
   end
   def update
-  	if @dhcpserver.update_attributes(params[:dhcpserver])
+  	@dhcpserver = Dhcpserver.find(params[:id])
+    if @dhcpserver.update_attributes(params[:dhcpserver])
       flash[:success] = "Dhcpserver updated"
       redirect_to main_path
     else
@@ -33,6 +34,9 @@ before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
   	Dhcpserver.find(params[:id]).destroy
   	flash[:success] = "Dhcpserver deleted"
   	redirect_to main_path
+  end
+  def reconfigure
+    @dhcpservers = Dhcpserver.all
   end
 
   private

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130924124147) do
+ActiveRecord::Schema.define(:version => 20130925050843) do
 
   create_table "dhcpservers", :force => true do |t|
     t.string   "ip"
@@ -26,6 +26,11 @@ ActiveRecord::Schema.define(:version => 20130924124147) do
 
   add_index "dhcpservers", ["ip", "sshport"], :name => "index_dhcpservers_on_ip_and_sshport"
   add_index "dhcpservers", ["ip", "sync"], :name => "index_dhcpservers_on_ip_and_sync"
+
+  create_table "dhcpservers_subnets", :force => true do |t|
+    t.integer "dhcpserver_id"
+    t.integer "subnet_id"
+  end
 
   create_table "hosts", :force => true do |t|
     t.string   "hostname"
