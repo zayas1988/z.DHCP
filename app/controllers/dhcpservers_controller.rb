@@ -24,6 +24,10 @@ before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
   def update
   	@dhcpserver = Dhcpserver.find(params[:id])
     if @dhcpserver.update_attributes(params[:dhcpserver])
+      if @dhcpserver.lock = true
+        @dhcpserver.generate_config
+        @dhcpserver.update_attributes(params[lock=false])
+      end
       flash[:success] = "Dhcpserver updated"
       redirect_to main_path
     else
@@ -36,9 +40,10 @@ before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
   	redirect_to main_path
   end
   def reconfigure
-    @dhcpservers = Dhcpserver.all
+    @dhcpserver = Dhcpserver.first
+    #Dhcpserver.generate_config
   end
-
+ 
   private
  
   def signed_in_user
@@ -47,5 +52,4 @@ before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
       redirect_to signin_url, notice: "Please sign in."
     end
   end
-
 end

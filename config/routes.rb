@@ -18,6 +18,7 @@ match '/help',    to: 'static_pages#help'
 match '/about',   to: 'static_pages#about'
 match '/configure', to: 'static_pages#configure' 
 match '/show', to: 'subnets#show'
+match '/reconfigure', to: "dhcpservers#reconfigure"
 #match '/newsubnet' to: 'subnets#new'
 
   # The priority is based upon order of creation:
