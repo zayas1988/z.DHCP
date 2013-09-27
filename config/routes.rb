@@ -3,7 +3,7 @@ ZDhcp::Application.routes.draw do
   get "dhcpservers/new"
 
   get "tftpservers/new"
-
+  get "getfreeips/:id", to: "subnets#getfreeips"
 resources :subnets
 resources :users
 resources :tftps
@@ -19,6 +19,7 @@ match '/about',   to: 'static_pages#about'
 match '/configure', to: 'static_pages#configure' 
 match '/show', to: 'subnets#show'
 match '/reconfigure', to: "dhcpservers#reconfigure"
+
 #match '/newsubnet' to: 'subnets#new'
 
   # The priority is based upon order of creation:

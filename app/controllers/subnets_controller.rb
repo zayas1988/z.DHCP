@@ -44,6 +44,11 @@ before_filter :signed_in_user
     end
   end
 
+  def getfreeips
+    @freeips=Subnet.find_by_id(params[:id]).freeips
+    render layout: false
+  end
+
   private
 
   def signed_in_user

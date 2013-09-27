@@ -23,8 +23,10 @@ before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
   end
   def update
   	@dhcpserver = Dhcpserver.find(params[:id])
+    
     if @dhcpserver.update_attributes(params[:dhcpserver])
       if @dhcpserver.lock = true
+        @tftps = Tftp.all
         @dhcpserver.generate_config
         @dhcpserver.update_attributes(params[lock=false])
       end
@@ -41,6 +43,7 @@ before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
   end
   def reconfigure
     @dhcpserver = Dhcpserver.first
+
     #Dhcpserver.generate_config
   end
  

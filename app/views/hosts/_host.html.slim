@@ -3,6 +3,6 @@ tr
   td = host.ip   
   td = host.mac
   td = host.discription
-  td = host.tftp.image
+  td = "#{host.tftp.image}/#{host.tftp.group}"
   /td = host.lastping
   td = link_to " del", host, method: :delete, data: {confirm: "You sure?" }

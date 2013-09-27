@@ -1,0 +1,10 @@
+<% provide(:title, "Edit subnet") %>
+<h1>Update subnet</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+      <%= render 'shared/subnet' %>
+
+  </div>
+</div>
+
