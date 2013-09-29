@@ -1,14 +1,15 @@
 - provide(:title, 'All subnets')
 
-= link_to "New tftp group", new_tftp_path,
-                                class: "btn btn-large btn-primary"
+
 
 table class="table table-striped"
  thead
   tr
    th image
    th group
-   th config name
+   th config
    th path to config
    th del
  = render @tftps
+= link_to "New tftp group", new_tftp_path,
+                                class: "btn btn-large btn-primary"

@@ -2,21 +2,32 @@ title Configure
 h1 Server config
 .tabbable
   ul.nav.nav-tabs
-    li class="active"
-      a href="#tab1" data-toggle="tab" Users
-    li 
-      a href="#tab2" data-toggle="tab" Subnets
+    - if current_user.admin?
+      li class="active"
+        a href="#tab1" data-toggle="tab" Users
+      li 
+        a href="#tab2" data-toggle="tab" Subnets
+      - else
+      li class="active"
+          a href="#tab2" data-toggle="tab" Subnets
     li 
       a href="#tab3" data-toggle="tab" Tftp
-    li
-      a href="#tab4" data-toggle="tab" Servers
+    - if current_user.admin?
+      li
+        a href="#tab4" data-toggle="tab" Servers
     
   .tab-content
-    div class="tab-pane active" id="tab1"
-      = render :template => "users/index"
-    div class="tab-pane" id="tab2"
-      = render :template => "subnets/index"
+    - if current_user.admin?
+      div class="tab-pane active" id="tab1"
+        = render :template => "users/index"
+      div class="tab-pane" id="tab2"
+        = render :template => "subnets/index"
+      - else
+      div class="tab-pane active" id="tab2"
+        = render :template => "subnets/index"
+
     div class="tab-pane" id="tab3"
       = render :template => "tftps/index"
-    div class="tab-pane" id="tab4"
-      = render :template => "dhcpservers/index"
+    - if current_user.admin?
+      div class="tab-pane" id="tab4"
+        = render :template => "dhcpservers/index"

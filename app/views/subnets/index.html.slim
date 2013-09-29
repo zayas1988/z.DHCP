@@ -1,6 +1,5 @@
 - provide(:title, 'All subnets')
-= link_to "New Subnet", new_subnet_path,
-                                class: "btn btn-large btn-primary"
+
 
 /<ul class="subnets">
 table class="table table-striped"  
@@ -10,6 +9,10 @@ table class="table table-striped"
    th domainname
    th nameservers
    th routers
-   th del
+   - if current_user.admin?
+    th del
  = render @subnets
 /</ul>
+- if current_user.admin?
+ = link_to "New Subnet", new_subnet_path,
+                                class: "btn btn-large btn-primary"

@@ -1,5 +1,6 @@
 class DhcpserversController < ApplicationController
-before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
+before_filter :signed_in_user #, only: [:index, :edit, :update, :destroy]
+before_filter :admin_user, only: [:destroy, :edit, :update]
   def index
     
         #@hosts = @hosts = Host.paginate(page: params[:page])
@@ -54,5 +55,8 @@ before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
       store_location
       redirect_to signin_url, notice: "Please sign in."
     end
+  end
+  def admin_user
+      redirect_to(main_path) unless current_user.admin?
   end
 end

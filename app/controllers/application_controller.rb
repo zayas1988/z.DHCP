@@ -7,5 +7,8 @@ include SessionsHelper
     sign_out
     super
   end
-
+private
+def admin_user
+      redirect_to(main_path) unless current_user.admin?
+  end
 end

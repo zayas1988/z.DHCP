@@ -1,7 +1,11 @@
 li
+  - if user.admin?
+   = "Admin: "
+   - else
+   = "User:     "
   = link_to user.name, edit_user_path(user)
-  - if !current_user?(user)
-    t | 
-    = link_to "delete", user, method: :delete,
+  - if (!current_user?(user) && current_user.admin?)
+   t  | 
+   = link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" }
 

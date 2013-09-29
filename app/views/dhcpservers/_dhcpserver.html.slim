@@ -1,6 +1,11 @@
 tr
- td = link_to dhcpserver.ip, edit_dhcpserver_path(dhcpserver)
+ td 
+   - if current_user.admin?
+    = link_to dhcpserver.ip, edit_dhcpserver_path(dhcpserver)
+    - else
+    = dhcpserver.ip
  td = dhcpserver.sshport
  td = dhcpserver.configpath
  td = dhcpserver.reloadcommand
- td = link_to "del", dhcpserver, method: :delete, data: { confirm: "You sure?" }
+ - if current_user.admin?
+   td = link_to "del", dhcpserver, method: :delete, data: { confirm: "You sure?" }

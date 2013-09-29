@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130926052256) do
+ActiveRecord::Schema.define(:version => 20130927105242) do
 
   create_table "dhcpservers", :force => true do |t|
     t.string   "ip"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20130926052256) do
     t.string   "remember_token"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -1,6 +1,5 @@
 - provide(:title, 'Servers managment')
-= link_to "New dhcp server", new_dhcpserver_path,
-                                class: "btn btn-large btn-primary"
+
 
 
 table class="table table-striped"
@@ -10,6 +9,10 @@ table class="table table-striped"
      th sshport
      th configpath
      th reloadcommand
-     th del
+     - if current_user.admin?
+      th del
   = render @dhcpservers 
   /.sort_by &:ip
+- if current_user.admin?
+  = link_to "New dhcp server", new_dhcpserver_path,
+                                class: "btn btn-large btn-primary"

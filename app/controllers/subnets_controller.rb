@@ -1,5 +1,6 @@
 class SubnetsController < ApplicationController
 before_filter :signed_in_user
+before_filter :admin_user, only: [:destroy, :edit, :update]
 
   def destroy
     Subnet.find(params[:id]).destroy

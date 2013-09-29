@@ -1,8 +1,10 @@
 - provide(:title, 'Users managment')
-= link_to "New user", new_user_path,
-                                class: "btn btn-large btn-primary"
+
 
 /<ul class="users">
 ul.users
   = render @users
 /</ul>
+- if current_user.admin?
+ = link_to "New user", new_user_path,
+                                class: "btn btn-large btn-primary"
