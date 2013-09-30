@@ -23,13 +23,20 @@ option subnet-mask #{subnet.mask}
 option broadcast-address #{subnet.adress};
 option routers #{subnet.routers};
 option domain-name-servers #{subnet.nameservers};
+")
+        if !subnet.guest?
+          ff.puts("
 option domain-name \"#{subnet.domainname}\";
 option netbios-node-type 2;
 option netbios-name-servers #{subnet.nameservers};
 next-server #{subnet.nextserver};
 }
-
+        
 ")
+        else
+          ff.puts("
+            }")
+        end
         subnet.hosts.each do |host|
           mac=host.mac.downcase.split("-")
           ff.puts("host #{host.hostname} {

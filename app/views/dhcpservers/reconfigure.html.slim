@@ -4,6 +4,7 @@ h1 Reconfigure
  .span6.offset3
   = form_for(@dhcpserver) do |f|
    /- @dhcpserver.lock = true
-   = check_box_tag "dhcpserver[lock][]", @dhcpserver.lock
    = render 'shared/error_messages', object: f.object
+   /= f.label "123"
+   = f.check_box :lock
    = f.submit "Reconfigure", class: "btn btn-large btn-danger"

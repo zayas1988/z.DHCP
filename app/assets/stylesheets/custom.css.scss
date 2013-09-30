@@ -158,15 +158,15 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
+  width: 80%;
   padding: 5px;
   margin-bottom: 15px;
   @include box_sizing;
 }
 
 checkbox {
- width: 500%;
-padding: 100px;
+ width: 5000%;
+padding: 1000px;
 }
 
 input {

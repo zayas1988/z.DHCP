@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130927105242) do
+ActiveRecord::Schema.define(:version => 20130929080708) do
 
   create_table "dhcpservers", :force => true do |t|
     t.string   "ip"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20130927105242) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "nextserver"
+    t.boolean  "guest"
   end
 
   add_index "subnets", ["adress"], :name => "index_subnets_on_adress", :unique => true

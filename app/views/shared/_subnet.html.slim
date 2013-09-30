@@ -17,4 +17,8 @@
   = f.label :nextserver
   = f.text_field :nextserver
 
-  = f.submit "Add new subnet", class: "btn btn-large btn-primary"
+  = f.label :guest
+   = f.check_box :guest, class: "checkbox"
+   = t("guest subnet")
+
+  = f.submit "Submit", class: "btn btn-large btn-primary"

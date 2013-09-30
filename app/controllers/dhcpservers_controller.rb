@@ -30,9 +30,13 @@ before_filter :admin_user, only: [:destroy, :edit, :update]
         @tftps = Tftp.all
         @dhcpserver.generate_config
         @dhcpserver.update_attributes(params[lock=false])
+        flash[:success] = "Reconfigure OK"
+        redirect_to main_path
+      else
+      
+        flash[:success] = "Dhcpserver updated"
+        redirect_to main_path
       end
-      flash[:success] = "Dhcpserver updated"
-      redirect_to main_path
     else
       render :action => :edit
     end
