@@ -1,6 +1,6 @@
 class Subnet < ActiveRecord::Base
 require "resolv"
-  attr_accessible :adress, :broadcast, :domainname, :mask, :nameservers, :routers, :dhcpserver_ids, :nextserver, :guest
+  attr_accessible :adress, :broadcast, :domainname, :mask, :nameservers, :routers, :dhcpserver_ids, :nextserver, :guest, :range, :rangemax, :leasetime
   before_save { |subnet| subnet.domainname = domainname.downcase }
   has_many :hosts, dependent: :destroy
   has_and_belongs_to_many :dhcpservers

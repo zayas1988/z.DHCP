@@ -24,6 +24,13 @@ option broadcast-address #{subnet.adress};
 option routers #{subnet.routers};
 option domain-name-servers #{subnet.nameservers};
 ")
+        if !subnet.range.nil?
+          ff.puts("range #{subnet.range} #{subnet.rangemax};")
+        end
+        if !subnet.leasetime.nil?
+          ff.puts("max-lease-time #{subnet.leasetime};
+default-lease-time #{subnet.leasetime};")
+        end
         if !subnet.guest?
           ff.puts("
 option domain-name \"#{subnet.domainname}\";
@@ -51,6 +58,8 @@ filename \"#{host.tftp.image}\";
       ff.close
    	end
   gentftp
+  copytoserver
+
   end
   def gentftp
     Tftp.find(:all) do |tftp|
@@ -63,6 +72,12 @@ filename \"#{host.tftp.image}\";
         mac=host.mac.upcase.split("-")
         ff.puts("#{host.hostname} #{mac[0]}#{mac[1]}#{mac[2]}#{mac[3]}#{mac[4]}#{mac[5]} #{host.tftp.group}")
       end
+    end
+  end
+  def copytoserver
+    Dhcpserver.find(:all) do (dhcpserver)
+      %x(scp /tmp/#{dhcpserver.ip} -P dhcpserver.port root@#{dhcpserver.ip}:/etc/dhcp/dhcpd.conf)
+      %x(ssh -p #{dhcpserver.port} root@#{dhcpserver.ip} #{dhcpserver.reloadcommand})
     end
   end
 end
