@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(:version => 20131003044506) do
     t.string   "hostname"
     t.string   "ip"
     t.string   "mac"
-    t.boolean  "usetftp"
     t.string   "discription"
     t.integer  "tftp_id"
     t.integer  "subnet_id"
@@ -46,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20131003044506) do
   end
 
   add_index "hosts", ["lastping"], :name => "index_hosts_on_lastping"
+  add_index "hosts", ["subnet_id", "ip"], :name => "index_hosts_on_subnet_id_and_ip"
 
   create_table "subnets", :force => true do |t|
     t.string   "adress"

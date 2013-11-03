@@ -1,4 +1,5 @@
 class Dhcpserver < ActiveRecord::Base
+  require "resolv"
   attr_accessible :configpath, :ip, :reloadcommand, :sshport, :sync, :lock, :subnet_ids
   validates :ip, presence: true, format: { with: Resolv::IPv4::Regex }, uniqueness: { case_sensitive: false }
   validates :sshport, presence: true
