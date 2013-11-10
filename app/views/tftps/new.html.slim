@@ -8,8 +8,9 @@ h1 New tftp group
       = f.text_field :image
       = f.label :group
       = f.text_field :group
-      = f.label "config file name"
-      = f.text_field  :config
       = f.label "path to config"
       = f.text_field  :pathtoconfig
+      
+      = f.label "config"
+      = f.text_area  :config
       = f.submit "Add new tftp group", class: "btn btn-large btn-primary"
