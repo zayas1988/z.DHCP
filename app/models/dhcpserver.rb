@@ -72,15 +72,18 @@ filename \"#{host.tftp.image}\";
       end
       ff.puts("#{tftp.config}")
       ff.close
-      ff= File.new("/tftpboot/#{filename[0]}.hosts","w")
-      Tftp.find_by_image("#{tftp.image}").hosts.each do |host|
-        mac=host.mac.upcase.split("-")
-        #if !(host.tftp.group == "network")
+      genhosts("#{filename[0]}")
+    end
+  end
+  def genhosts(filen)
+    ff= File.new("/tftpboot/#{filen}.hosts","w")
+    Hosts.all.each do |host|
+      mac=host.mac.upcase.split("-")
+        if !(host.tftp.group == "network")
           ff.puts("#{host.hostname} #{mac[0]}#{mac[1]}#{mac[2]}#{mac[3]}#{mac[4]}#{mac[5]} #{host.tftp.group}")
-        #end
+        end
       end
       ff.close
-    end
   end
   def copytoserver
     Dhcpserver.find(:all) do (dhcpserver)
