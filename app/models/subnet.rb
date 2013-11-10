@@ -29,13 +29,17 @@ def freeips
 end
 
 def importsubnet(sub)
-  ips =  %x(cat ../../../allcomps2 | grep "#{sub}" | while read line; do echo $line; done)
+  ips =  %x(cat /opt/z.dhcp/allcomps3 | grep "#{sub}" | while read line; do echo $line; done)
   puts "#{ips}"
   ip=ips.split("|")
   i=1
   begin
     puts "mac:  #{ip[1+i]} ip: #{ip[2+i]} hostname: #{ip[3+i]} tftp: #{ip[4+i]} discr:  #{ip[5+i]}"
+    if Tftp.find_by_image(ip[4+i]).nil?
+      ip[4+i]="pxelinux.0"
+    end
     @newhost = Subnet.find_by_adress("192.168.177.0").hosts.new(:hostname => ip[3+i], :ip => ip[2+i], :mac => ip[1+i], :discription => ip[5+i], :tftp_id => Tftp.find_by_image(ip[4+i]).id)
+    @newhost.save
     #ip: nil, mac: nil, discription: nil, tftp_id: nil, subnet_id: 2, created_at: nil, updated_at: nil, lastping: nil
     i+=7
   end while i < ip.length

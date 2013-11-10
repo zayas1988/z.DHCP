@@ -59,7 +59,7 @@ filename \"#{host.tftp.image}\";
       ff.close
    	end
   gentftp
-  copytoserver
+#  copytoserver
 
   end
   def gentftp
@@ -77,8 +77,9 @@ filename \"#{host.tftp.image}\";
   end
   def copytoserver
     Dhcpserver.find(:all) do (dhcpserver)
-      %x(scp /tmp/#{dhcpserver.ip} -P dhcpserver.port root@#{dhcpserver.ip}:/etc/dhcp/dhcpd.conf)
-      %x(ssh -p #{dhcpserver.port} root@#{dhcpserver.ip} #{dhcpserver.reloadcommand})
+#      %x(scp /tmp/#{dhcpserver.ip} -P dhcpserver.port root@#{dhcpserver.ip}:/etc/dhcp/dhcpd.conf)
+#      %x(ssh -p #{dhcpserver.port} root@#{dhcpserver.ip} #{dhcpserver.reloadcommand})
+       puts 1
     end
   end
 end
