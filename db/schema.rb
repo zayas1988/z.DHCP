@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131003044506) do
+ActiveRecord::Schema.define(:version => 20131110112322) do
 
   create_table "dhcpservers", :force => true do |t|
     t.string   "ip"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(:version => 20131003044506) do
   create_table "tftps", :force => true do |t|
     t.string   "image"
     t.string   "group"
-    t.string   "config"
+    t.text     "config"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "pathtoconfig"
