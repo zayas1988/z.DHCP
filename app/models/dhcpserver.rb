@@ -63,16 +63,23 @@ filename \"#{host.tftp.image}\";
 
   end
   def gentftp
-    Tftp.find(:all) do |tftp|
+    Tftp.all.each do |tftp|
       filename=tftp.image.split(".")
-      ff= File.new("/tftpboot/#{filename[0]}.conf.group-#{tftp.group}","w")
+      if tftp.group == "network"
+        ff= File.new("/tftpboot/#{filename[0]}.conf.#{tftp.group}","w")
+      else
+        ff= File.new("/tftpboot/#{filename[0]}.conf.group-#{tftp.group}","w")
+      end
       ff.puts("#{tftp.config}")
       ff.close
       ff= File.new("/tftpboot/#{filename[0]}.hosts","w")
       tftp.hosts.each do |host|
         mac=host.mac.upcase.split("-")
-        ff.puts("#{host.hostname} #{mac[0]}#{mac[1]}#{mac[2]}#{mac[3]}#{mac[4]}#{mac[5]} #{host.tftp.group}")
+        if !(group=="network")
+          ff.puts("#{host.hostname} #{mac[0]}#{mac[1]}#{mac[2]}#{mac[3]}#{mac[4]}#{mac[5]} #{host.tftp.group}")
+        end
       end
+      ff.close
     end
   end
   def copytoserver
