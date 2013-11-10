@@ -25,10 +25,10 @@ option broadcast-address #{subnet.adress};
 option routers #{subnet.routers};
 option domain-name-servers #{subnet.nameservers};
 ")
-        if !subnet.range.nil? || !subnet.range.empty? 
+        if !(!subnet.range.nil? || !subnet.range.empty?)
           ff.puts("range #{subnet.range} #{subnet.rangemax};")
         end
-        if !subnet.leasetime.nil? || !subnet.leasetime.empty?
+        if !(!subnet.leasetime.nil? || !subnet.leasetime.empty?)
           ff.puts("max-lease-time #{subnet.leasetime};
 default-lease-time #{subnet.leasetime};")
         end
