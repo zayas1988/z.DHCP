@@ -73,7 +73,7 @@ filename \"#{host.tftp.image}\";
       ff.puts("#{tftp.config}")
       ff.close
       ff= File.new("/tftpboot/#{filename[0]}.hosts","w")
-      Ttftp.find_by_image("#{tftp.image}").hosts.each do |host|
+      Tftp.find_by_image("#{tftp.image}").hosts.each do |host|
         mac=host.mac.upcase.split("-")
         if !(tftp.group == "network")
           ff.puts("#{host.hostname} #{mac[0]}#{mac[1]}#{mac[2]}#{mac[3]}#{mac[4]}#{mac[5]} #{host.tftp.group}")
