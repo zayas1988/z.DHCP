@@ -6,10 +6,13 @@ h1 Edit tftp group
       = render 'shared/error_messages', object: f.object
       = f.label :image
       = f.text_field :image
+      = f.label "path to image"
+      = f.text_field  :pathtoimage
       = f.label :group
       = f.text_field :group
       = f.label "path to config"
       = f.text_field  :pathtoconfig
+     
       
       = f.label "config"
       = f.text_area  :config
