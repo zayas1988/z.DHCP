@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131111134505) do
+ActiveRecord::Schema.define(:version => 20131116052929) do
 
   create_table "dhcpservers", :force => true do |t|
     t.string   "ip"
@@ -69,10 +69,11 @@ ActiveRecord::Schema.define(:version => 20131111134505) do
     t.string   "image"
     t.string   "group"
     t.text     "config"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.string   "pathtoconfig"
     t.string   "pathtoimage"
+    t.string   "configfilename"
   end
 
   add_index "tftps", ["config", "pathtoconfig"], :name => "index_tftps_on_config_and_pathtoconfig"
