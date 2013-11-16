@@ -50,7 +50,7 @@ next-server #{subnet.nextserver};
           ff.puts("host #{host.hostname} {
 hardware ethernet #{mac[0]}:#{mac[1]}:#{mac[2]}:#{mac[3]}:#{mac[4]}:#{mac[5]};
 fixed-address #{host.ip};
-filename \"#{host.tftp.image}\";
+filename \"#{host.tftp.pathtoimage}#{host.tftp.image}\";
 }
 
 ")
@@ -64,15 +64,15 @@ filename \"#{host.tftp.image}\";
   end
   def gentftp
     Tftp.all.each do |tftp|
-      filename=tftp.image.split(".")
+      #filename=tftp.image.split(".")
       if tftp.group == "network"
-        ff= File.new("/tftpboot/#{filename[0]}.conf.#{tftp.group}","w")
+        ff= File.new("/tftpboot/#{tftp.pathtoconfig}#{tftp.configfilename}.conf.#{tftp.group}","w")
       else
-        ff= File.new("/tftpboot/#{filename[0]}.conf.group-#{tftp.group}","w")
+        ff= File.new("/tftpboot/#{tftp.pathtoconfig}#{tftp.configfilename}.conf.group-#{tftp.group}","w")
       end
       ff.puts("#{tftp.config}")
       ff.close
-      genhosts("#{filename[0]}")
+      genhosts("#{tftp.pathtoconfig}#{tftp.configfilename}")
     end
   end
   def genhosts(filen)
@@ -84,6 +84,7 @@ filename \"#{host.tftp.image}\";
         end
       end
       ff.close
+
   end
   def copytoserver
     Dhcpserver.find(:all) do (dhcpserver)
